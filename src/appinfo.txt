@@ -1,0 +1,7 @@
+flask_demo/
+├── app.py
+├── requirements.txt
+├── tests/
+│   └── test_app.py
+├── Dockerfile
+└── Jenkinsfile

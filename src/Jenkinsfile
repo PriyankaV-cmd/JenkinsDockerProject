@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    environment {
+        APP_ENV = "dev"
+    }
+    tools {
+        python 'Python-3.10'  // configure in Jenkins global tools
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'pytest tests/'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'tar -czf flask_demo.tar.gz *'
+            }
+        }
+        stage('Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'flask_demo.tar.gz', fingerprint: true
+            }
+        }
+        stage('Environment') {
+            steps {
+                sh 'echo "Running in $APP_ENV environment"'
+            }
+        }
+    }
+}
