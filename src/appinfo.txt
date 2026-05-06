@@ -1,7 +1,10 @@
-flask_demo/
-├── app.py
-├── requirements.txt
-├── tests/
-│   └── test_app.py
-├── Dockerfile
-└── Jenkinsfile
+Jenkinsproject/
+├── Dockerfile          # at root, for building container
+├── Jenkinsfile         # at root, for Jenkins pipeline
+├── requirements.txt    # at root, Python dependencies
+├── README.md
+├── tests/              # unit tests
+└── src/                # your application source code
+    ├── app.py          # main Flask app
+    ├── __init__.py     # optional, makes src a package
+    └── other modules   # any helper files, db.py, routes.py, etc.
